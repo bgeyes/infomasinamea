@@ -1,0 +1,32 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body ng-app='home.demo'>
+
+		{% verbatim %}
+		<div ng-controller='HomeController'>
+			<dir ng-repeat="list in data">
+				<h3>{{ list.name }}</h3>
+				<dir ng-repeat="model in list.model">
+					<h5>{{ model.model_name }}</h5>
+					
+					<ul>
+						<li ng-repeat="review in model.review">{{ review.review }}</li>
+					</ul>
+					
+				</dir>
+				<input type="text" ng-model="new_model">
+				<button ng-click="add(list, new_model)">+</button>
+			</dir>
+		</div>
+		{% endverbatim %}
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+		<script src="{% static "home/home.js" %}"></script>
+	</body>
+</html>
+
